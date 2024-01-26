@@ -1,23 +1,20 @@
-import { Box, Button, ThemeProvider, Typography } from '@mui/material'
+import { Route, Routes } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material'
 import { theme } from './theme'
-import { useState } from 'react'
-import { SizedBox } from './components/SizedBox'
+//import { SizedBox } from './components/SizedBox'
+import { Home } from './pages/Home'
+import { Edit } from './pages/Edit'
+import { TaskContextProvider } from './context/task-context'
 
 export default function App() {
-  const [counter, setCounter] = useState(0)
-
   return (
-    <ThemeProvider theme={theme}>
-      <Box>
-        <Typography variant="body1">Current: {counter}</Typography>
-        <SizedBox height={2} />
-        <Button
-          variant="contained"
-          onClick={() => setCounter(current => current + 1)}
-        >
-          Count Me!
-        </Button>
-      </Box>
-    </ThemeProvider>
+    <TaskContextProvider>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/edit" element={<Edit />} />
+        </Routes>
+      </ThemeProvider>
+    </TaskContextProvider>
   )
 }
