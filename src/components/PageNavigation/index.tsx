@@ -1,4 +1,4 @@
-import { Breadcrumbs, Link } from '@mui/material'
+import { Breadcrumbs, Link, styled } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 
 export const PageNavigation: React.FC<Props> = ({ currentPage }) => {
   return (
-    <header>
+    <PageHeader>
       <Breadcrumbs
         sx={{ fontSize: '0.875rem' }}
         aria-label="breadcrumb"
@@ -25,6 +25,10 @@ export const PageNavigation: React.FC<Props> = ({ currentPage }) => {
           {currentPage}
         </Link>
       </Breadcrumbs>
-    </header>
+    </PageHeader>
   )
 }
+
+const PageHeader = styled('header')({
+  marginBottom: '1rem',
+})
