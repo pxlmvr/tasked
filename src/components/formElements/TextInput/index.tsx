@@ -45,6 +45,7 @@ export const TextInput: React.FC<Props> = ({
         multiline={multiline}
         minRows={multiline ? 7 : 1}
         onBlur={onBlur}
+        id={id}
       />
       <SrOnlyLabel htmlFor={id}>{label}</SrOnlyLabel>
     </React.Fragment>

@@ -66,7 +66,7 @@ export const TaskForm: React.FC = () => {
           onBlur={() => setDescriptionTouched(true)}
         />
         <Actions>
-          <PillButton onClick={createTask}>
+          <PillButton id="create-task-button" onClick={createTask}>
             <Add fontSize="small" sx={{ marginRight: '0.5rem' }} />
             Add
           </PillButton>
