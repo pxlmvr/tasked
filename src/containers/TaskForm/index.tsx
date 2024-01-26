@@ -1,11 +1,14 @@
 import { CardContainer } from '@/components/CardContainer'
 import { PillButton } from '@/components/PillButton'
 import { TextInput } from '@/components/formElements/TextInput'
+import { Task, TaskContext } from '@/context/task-context'
 import { Add, InsertDriveFileOutlined } from '@mui/icons-material'
 import { Typography, styled } from '@mui/material'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 export const TaskForm: React.FC = () => {
+  const { setTasks } = useContext(TaskContext)
+
   const [taskTitle, setTaskTitle] = useState<string>('')
   const [titleTouched, setTitleTouched] = useState<boolean>(false)
 
@@ -25,7 +28,17 @@ export const TaskForm: React.FC = () => {
     setTitleTouched(true)
     setDescriptionTouched(true)
     if (isValid) {
-      alert('Task created')
+      const task: Task = {
+        title: taskTitle,
+        description: taskDescription,
+        status: 'todo',
+        createdAt: Date.now(),
+      }
+
+      setTasks((prevTasks: Task[]) => {
+        return [...prevTasks, task]
+      })
+
       refreshForm()
     }
   }

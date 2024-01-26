@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 export type TaskStatus =
   | 'todo'
@@ -11,7 +11,7 @@ export type TaskStatus =
 export type Task = {
   title: string
   description: string
-  createdAt: string
+  createdAt: number
   status: TaskStatus
 }
 
@@ -30,7 +30,14 @@ export const TaskContext = createContext<TaskContextType>(defaultValue)
 export const TaskContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const localTasks = localStorage.getItem('tasks')
+    return localTasks ? JSON.parse(localTasks) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
   return (
     <TaskContext.Provider
