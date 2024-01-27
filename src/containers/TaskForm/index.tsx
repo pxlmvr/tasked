@@ -44,7 +44,7 @@ export const TaskForm: React.FC = () => {
   }
 
   return (
-    <CardContainer>
+    <CardContainer padding="md">
       <FormHeader>
         <InsertDriveFileOutlined
           sx={theme => ({

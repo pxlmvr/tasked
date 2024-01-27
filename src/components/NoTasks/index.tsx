@@ -2,7 +2,7 @@ import { Typography, styled } from '@mui/material'
 import { CardContainer } from '@/components/CardContainer'
 
 export const NoTasks: React.FC = () => (
-  <CardContainer>
+  <CardContainer padding="lg">
     <Wrapper>
       <img
         srcSet="/images/tasks@2x.png, /images/tasks@2x.png 2x"
@@ -30,5 +30,4 @@ const Wrapper = styled('div')({
     width: 100,
     height: 74.47,
   },
-  padding: '1.8rem',
 })
