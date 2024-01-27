@@ -7,7 +7,10 @@ type Props = {
   task: Task
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const TaskHistory: React.FC<Props> = ({ task }) => {
+  console.log(task)
+
   return (
     <React.Fragment>
       <Button

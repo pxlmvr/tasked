@@ -1,6 +1,7 @@
 import { CardContainer } from '@/components/CardContainer'
 import { PillButton } from '@/components/PillButton'
 import { TextInput } from '@/components/formElements/TextInput'
+import { FormHeader } from '@/components/styled/shared'
 import { Task, TaskContext } from '@/context/task-context'
 import { Add, InsertDriveFileOutlined } from '@mui/icons-material'
 import { Typography, styled } from '@mui/material'
@@ -28,11 +29,14 @@ export const TaskForm: React.FC = () => {
     setTitleTouched(true)
     setDescriptionTouched(true)
     if (isValid) {
+      const date = Date.now()
+
       const task: Task = {
         title: taskTitle,
         description: taskDescription,
         status: 'todo',
-        createdAt: Date.now(),
+        createdAt: date,
+        id: date.toString(),
       }
 
       setTasks((prevTasks: Task[]) => {
@@ -88,12 +92,6 @@ export const TaskForm: React.FC = () => {
     </CardContainer>
   )
 }
-
-const FormHeader = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  marginBottom: '1.5rem',
-})
 
 const Actions = styled('div')({
   margin: '2rem 0 0.5rem 0',

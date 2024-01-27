@@ -1,4 +1,5 @@
-import { TextField, styled } from '@mui/material'
+import { SrOnlyLabel } from '@/components/styled/shared'
+import { TextField } from '@mui/material'
 import React from 'react'
 
 type Props = {
@@ -51,15 +52,3 @@ export const TextInput: React.FC<Props> = ({
     </React.Fragment>
   )
 }
-
-const SrOnlyLabel = styled('label')({
-  border: 0,
-  clipPath: 'rect(1px, 1px, 1px, 1px)',
-  height: 1,
-  width: 1,
-  margin: -1,
-  overflow: 'hidden',
-  padding: 0,
-  position: 'absolute',
-  whiteSpace: 'nowrap',
-})

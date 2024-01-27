@@ -4,6 +4,7 @@ import { TaskPreview } from '.'
 import { Task } from '@/context/task-context'
 
 const task: Task = {
+  id: '123',
   title: 'A test task',
   description: 'Description of the task',
   createdAt: Date.now(),

@@ -22,6 +22,7 @@ export const EditTask: React.FC<Props> = ({ task }) => {
           sx={theme => ({ color: theme.palette.grey[400] })}
         />
       }
+      href={`/edit?id=${task.id}`}
     >
       Edit Task
     </Button>

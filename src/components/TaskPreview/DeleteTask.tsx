@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import React, { useContext, useState } from 'react'
 import { Modal, Paper, Typography, styled } from '@mui/material'
+import { Actions } from '../styled/shared'
 
 type Props = {
   task: Task
@@ -15,7 +16,7 @@ export const DeleteTask: React.FC<Props> = ({ task }) => {
 
   const handleDeleteTask = (removedTask: Task) => {
     setTasks((tasks: Task[]) => {
-      return tasks.filter(t => t.createdAt !== removedTask.createdAt)
+      return tasks.filter(t => t.id !== removedTask.id)
     })
     setOpen(false)
   }
@@ -91,7 +92,6 @@ export const DeleteTask: React.FC<Props> = ({ task }) => {
               })}
               variant="contained"
               onClick={() => handleDeleteTask(task)}
-              color="error"
             >
               Delete
             </Button>
@@ -106,14 +106,4 @@ const Image = styled('img')({
   height: 56,
   margin: '0 auto 2.5rem 0',
   width: 56,
-})
-
-const Actions = styled('div')({
-  display: 'flex',
-  justifyContent: 'space-between',
-  columnGap: '0.75rem',
-  marginTop: '2.5rem',
-  '& > button': {
-    flex: 1,
-  },
 })

@@ -9,6 +9,7 @@ export type TaskStatus =
   | 'deployed'
 
 export type Task = {
+  id: string
   title: string
   description: string
   createdAt: number
