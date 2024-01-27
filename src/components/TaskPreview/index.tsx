@@ -1,14 +1,14 @@
-import { Task } from '@/context/task-context'
 import { CardContainer } from '../CardContainer'
-import styled from '@emotion/styled'
-import { Button, IconButton, Popover, Typography } from '@mui/material'
+import { DeleteTask } from './DeleteTask'
+import { EditTask } from './EditTask'
 import { format } from 'date-fns'
+import { IconButton, Popover, Typography } from '@mui/material'
 import { MoreVert, Schedule } from '@mui/icons-material'
 import { StatusChip } from '../StatusChip'
+import { Task } from '@/context/task-context'
+import { TaskHistory } from './TaskHistory'
 import { useState } from 'react'
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import EventIcon from '@mui/icons-material/Event'
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
+import styled from '@emotion/styled'
 
 type Props = {
   task: Task
@@ -71,56 +71,9 @@ export const TaskPreview: React.FC<Props> = ({ task, testId }) => {
             },
           }}
         >
-          <Button
-            sx={{
-              textTransform: 'none',
-              fontWeight: 400,
-              justifyContent: 'flex-start',
-              padding: '0.5rem 1rem',
-            }}
-            fullWidth
-            variant="text"
-            startIcon={
-              <EventIcon sx={theme => ({ color: theme.palette.grey[400] })} />
-            }
-          >
-            Task History
-          </Button>
-          <Button
-            sx={{
-              textTransform: 'none',
-              fontWeight: 400,
-              justifyContent: 'flex-start',
-              padding: '0.5rem 1rem',
-            }}
-            fullWidth
-            variant="text"
-            startIcon={
-              <ModeEditOutlineOutlinedIcon
-                sx={theme => ({ color: theme.palette.grey[400] })}
-              />
-            }
-          >
-            Edit Task
-          </Button>
-          <Button
-            sx={theme => ({
-              textTransform: 'none',
-              fontWeight: 400,
-              justifyContent: 'flex-start',
-              padding: '0.5rem 1rem',
-              color: theme.palette.error.dark,
-            })}
-            fullWidth
-            variant="text"
-            startIcon={
-              <DeleteOutlineIcon
-                sx={theme => ({ color: theme.palette.grey[400] })}
-              />
-            }
-          >
-            Delete Task
-          </Button>
+          <TaskHistory task={task} />
+          <EditTask task={task} />
+          <DeleteTask task={task} />
         </Popover>
       </Header>
       <CreatedAt>

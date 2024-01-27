@@ -15,7 +15,7 @@ export type Task = {
   status: TaskStatus
 }
 
-type TaskContextType = {
+export type TaskContextType = {
   tasks: Task[]
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>
 }

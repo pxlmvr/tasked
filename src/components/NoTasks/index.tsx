@@ -5,7 +5,7 @@ export const NoTasks: React.FC = () => (
   <CardContainer padding="lg">
     <Wrapper>
       <img
-        srcSet="/images/tasks@2x.png, /images/tasks@2x.png 2x"
+        srcSet="/images/tasks.png, /images/tasks@2x.png 2x"
         src="/images/tasks@2x.png"
       />
       <Typography
