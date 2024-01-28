@@ -1,4 +1,5 @@
 import { CardContainer } from '@/components/CardContainer'
+import { EditTaskForm } from '@/containers/EditTaskForm'
 import { FormHeader } from '@/components/styled/shared'
 import { Page } from '@/components/Page'
 import { PageNavigation } from '@/components/PageNavigation'
@@ -8,7 +9,6 @@ import { Typography } from '@mui/material'
 import { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
-import { EditTaskForm } from './EditTaskForm'
 
 export const Edit: React.FC = () => {
   const location = useLocation()

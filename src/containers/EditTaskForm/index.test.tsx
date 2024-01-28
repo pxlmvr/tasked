@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import { EditTaskForm } from './EditTaskForm'
+import { EditTaskForm } from '.'
 import { Task } from '@/context/task-context'
 import { BrowserRouter } from 'react-router-dom'
 
