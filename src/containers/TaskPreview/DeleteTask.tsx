@@ -3,7 +3,7 @@ import Button from '@mui/material/Button'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import React, { useContext, useState } from 'react'
 import { Modal, Paper, Typography, styled } from '@mui/material'
-import { Actions } from '../styled/shared'
+import { Actions } from '@/components/styled/shared'
 
 type Props = {
   task: Task

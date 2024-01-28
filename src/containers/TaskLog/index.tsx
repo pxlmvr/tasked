@@ -2,7 +2,7 @@ import { Task, TaskContext } from '@/context/task-context'
 import { Typography, styled } from '@mui/material'
 import { useContext } from 'react'
 import { NoTasks } from '@/components/NoTasks'
-import { TaskPreview } from '@/components/TaskPreview'
+import { TaskPreview } from '@/containers/TaskPreview'
 
 export const TaskLog: React.FC = () => {
   const { tasks } = useContext(TaskContext)
