@@ -67,6 +67,7 @@ export const EditTaskForm: React.FC<Props> = ({ task }) => {
         label="Description"
       />
       <StatusSelect
+        initialValue={task.status}
         value={taskStatus}
         onChange={e => setTaskStatus(e.target.value as TaskStatus)}
       />

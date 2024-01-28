@@ -52,14 +52,14 @@ describe('edit a task', () => {
     cy.findByLabelText('Title').clear().type('My task')
     cy.findByLabelText('Description').clear().type('Another Description')
     cy.findByRole('combobox').click()
-    cy.findByText('Blocked').click()
+    cy.findByText('In Progress').click()
 
     cy.findByLabelText('Title').should('have.value', 'My task')
     cy.findByLabelText('Description').should(
       'have.value',
       'Another Description',
     )
-    cy.findByTestId('status-select').should('have.value', 'blocked')
+    cy.findByTestId('status-select').should('have.value', 'inProgress')
   })
 
   it('attempting to save when one field is not filled shows error', () => {
@@ -73,7 +73,7 @@ describe('edit a task', () => {
     cy.findByText(/mandatory field/i).should('be.visible')
   })
 
-  it.only('applies changes on save', () => {
+  it('applies changes on save', () => {
     cy.visit('localhost:5173/edit?id=123')
 
     cy.findByLabelText('Title').clear().type('Edited task')
@@ -82,5 +82,169 @@ describe('edit a task', () => {
 
     cy.url().should('not.contain', '/edit?id=123')
     cy.findByText('Edited task').should('be.visible')
+  })
+})
+
+describe('available status options', () => {
+  it('for "todo" status', () => {
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify([
+        {
+          id: '123',
+          title: 'Task',
+          description: 'Description',
+          createdAt: 123,
+          status: 'todo',
+        },
+      ]),
+    )
+
+    cy.visit('localhost:5173/edit?id=123')
+
+    cy.findByRole('combobox').click()
+
+    cy.findByTestId('option-todo').should('be.visible')
+    cy.findByTestId('option-inProgress').should('be.visible')
+
+    cy.findByTestId('option-blocked').should('not.exist')
+    cy.findByTestId('option-inQa').should('not.exist')
+    cy.findByTestId('option-done').should('not.exist')
+    cy.findByTestId('option-deployed').should('not.exist')
+  })
+
+  it('for "inProgress" status', () => {
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify([
+        {
+          id: '123',
+          title: 'Task',
+          description: 'Description',
+          createdAt: 123,
+          status: 'inProgress',
+        },
+      ]),
+    )
+
+    cy.visit('localhost:5173/edit?id=123')
+
+    cy.findByRole('combobox').click()
+
+    cy.findByTestId('option-inProgress').should('be.visible')
+    cy.findByTestId('option-blocked').should('be.visible')
+    cy.findByTestId('option-inQa').should('be.visible')
+
+    cy.findByTestId('option-todo').should('not.exist')
+    cy.findByTestId('option-done').should('not.exist')
+    cy.findByTestId('option-deployed').should('not.exist')
+  })
+
+  it('for "blocked" status', () => {
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify([
+        {
+          id: '123',
+          title: 'Task',
+          description: 'Description',
+          createdAt: 123,
+          status: 'blocked',
+        },
+      ]),
+    )
+
+    cy.visit('localhost:5173/edit?id=123')
+
+    cy.findByRole('combobox').click()
+
+    cy.findByTestId('option-todo').should('be.visible')
+    cy.findByTestId('option-blocked').should('be.visible')
+
+    cy.findByTestId('option-inProgress').should('not.exist')
+    cy.findByTestId('option-inQa').should('not.exist')
+    cy.findByTestId('option-done').should('not.exist')
+    cy.findByTestId('option-deployed').should('not.exist')
+  })
+
+  it('for "inQa" status', () => {
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify([
+        {
+          id: '123',
+          title: 'Task',
+          description: 'Description',
+          createdAt: 123,
+          status: 'inQa',
+        },
+      ]),
+    )
+
+    cy.visit('localhost:5173/edit?id=123')
+
+    cy.findByRole('combobox').click()
+
+    cy.findByTestId('option-inQa').should('be.visible')
+    cy.findByTestId('option-todo').should('be.visible')
+    cy.findByTestId('option-done').should('be.visible')
+
+    cy.findByTestId('option-inProgress').should('not.exist')
+    cy.findByTestId('option-blocked').should('not.exist')
+    cy.findByTestId('option-deployed').should('not.exist')
+  })
+
+  it('for "done" status', () => {
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify([
+        {
+          id: '123',
+          title: 'Task',
+          description: 'Description',
+          createdAt: 123,
+          status: 'done',
+        },
+      ]),
+    )
+
+    cy.visit('localhost:5173/edit?id=123')
+
+    cy.findByRole('combobox').click()
+
+    cy.findByTestId('option-done').should('be.visible')
+    cy.findByTestId('option-deployed').should('be.visible')
+
+    cy.findByTestId('option-inProgress').should('not.exist')
+    cy.findByTestId('option-todo').should('not.exist')
+    cy.findByTestId('option-blocked').should('not.exist')
+    cy.findByTestId('option-inQa').should('not.exist')
+  })
+
+  it('for "deployed" status', () => {
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify([
+        {
+          id: '123',
+          title: 'Task',
+          description: 'Description',
+          createdAt: 123,
+          status: 'deployed',
+        },
+      ]),
+    )
+
+    cy.visit('localhost:5173/edit?id=123')
+
+    cy.findByRole('combobox').click()
+
+    cy.findByTestId('option-deployed').should('be.visible')
+
+    cy.findByTestId('option-done').should('not.exist')
+    cy.findByTestId('option-inProgress').should('not.exist')
+    cy.findByTestId('option-todo').should('not.exist')
+    cy.findByTestId('option-blocked').should('not.exist')
+    cy.findByTestId('option-inQa').should('not.exist')
   })
 })

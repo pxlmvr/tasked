@@ -3,15 +3,21 @@ import MenuItem from '@mui/material/MenuItem'
 import React from 'react'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import { getAllowedTransitions } from '@/utils/statusTransitions'
 
 type StatusOption = { label: string; value: TaskStatus }
 
 type Props = {
   onChange: (e: SelectChangeEvent) => void
   value: TaskStatus
+  initialValue: TaskStatus
 }
 
-export const StatusSelect: React.FC<Props> = ({ onChange, value }) => {
+export const StatusSelect: React.FC<Props> = ({
+  onChange,
+  value,
+  initialValue,
+}) => {
   const statusOptions: StatusOption[] = [
     { label: 'Blocked', value: 'blocked' },
     { label: 'Deployed', value: 'deployed' },
@@ -20,6 +26,12 @@ export const StatusSelect: React.FC<Props> = ({ onChange, value }) => {
     { label: 'In QA', value: 'inQa' },
     { label: 'Todo', value: 'todo' },
   ]
+
+  const availableTransitions: TaskStatus[] = getAllowedTransitions(initialValue)
+
+  const availableOptions: StatusOption[] = statusOptions.filter(
+    (option: StatusOption) => availableTransitions.includes(option.value),
+  )
 
   const id: string = 'status_select'
 
@@ -42,8 +54,12 @@ export const StatusSelect: React.FC<Props> = ({ onChange, value }) => {
         }}
         IconComponent={KeyboardArrowDownIcon}
       >
-        {statusOptions.map((option: StatusOption) => (
-          <MenuItem key={option.value} value={option.value}>
+        {availableOptions.map((option: StatusOption) => (
+          <MenuItem
+            data-testid={`option-${option.value}`}
+            key={option.value}
+            value={option.value}
+          >
             {option.label}
           </MenuItem>
         ))}
