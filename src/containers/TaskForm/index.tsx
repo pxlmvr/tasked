@@ -37,6 +37,7 @@ export const TaskForm: React.FC = () => {
         status: 'todo',
         createdAt: date,
         id: date.toString(),
+        history: [{ targetStatus: 'todo', createdAt: date }],
       }
 
       setTasks((prevTasks: Task[]) => {

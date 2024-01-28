@@ -9,6 +9,7 @@ const task: Task = {
   description: 'Description of the task',
   createdAt: Date.now(),
   status: 'todo',
+  history: [],
 }
 
 describe('<TaskPreview />', () => {

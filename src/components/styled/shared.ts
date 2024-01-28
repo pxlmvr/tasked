@@ -27,3 +27,9 @@ export const Actions = styled('div')({
     flex: 1,
   },
 })
+
+export const CreatedAt = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  fontSize: '0.75rem',
+})

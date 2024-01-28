@@ -11,6 +11,7 @@ import CheckIcon from '@mui/icons-material/Check'
 import { useNavigate } from 'react-router-dom'
 
 import { useContext, useState } from 'react'
+import { updateTaskHistory } from '@/utils/updateTaskHistory'
 
 type Props = {
   task: Task
@@ -37,9 +38,9 @@ export const EditTaskForm: React.FC<Props> = ({ task }) => {
         title: taskTitle,
         description: taskDescription,
         status: taskStatus,
+        history: updateTaskHistory(task, taskStatus),
       }
 
-      // get all tasks except edited one
       const allTasks: Task[] = tasks.filter((t: Task) => t.id !== task.id)
       allTasks.unshift(newTask)
 

@@ -4,8 +4,7 @@ import React from 'react'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { getAllowedTransitions } from '@/utils/statusTransitions'
-
-type StatusOption = { label: string; value: TaskStatus }
+import { StatusOption, statusOptions } from '@/utils/statusOptions'
 
 type Props = {
   onChange: (e: SelectChangeEvent) => void
@@ -18,15 +17,6 @@ export const StatusSelect: React.FC<Props> = ({
   value,
   initialValue,
 }) => {
-  const statusOptions: StatusOption[] = [
-    { label: 'Blocked', value: 'blocked' },
-    { label: 'Deployed', value: 'deployed' },
-    { label: 'Done', value: 'done' },
-    { label: 'In Progress', value: 'inProgress' },
-    { label: 'In QA', value: 'inQa' },
-    { label: 'Todo', value: 'todo' },
-  ]
-
   const availableTransitions: TaskStatus[] = getAllowedTransitions(initialValue)
 
   const availableOptions: StatusOption[] = statusOptions.filter(

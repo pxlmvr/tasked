@@ -19,6 +19,7 @@ describe('<EditTaskForm />', () => {
       description: 'Task description',
       status: 'todo',
       createdAt: Date.now(),
+      history: [],
     }
 
     const { queryByLabelText, queryByTestId } = render(

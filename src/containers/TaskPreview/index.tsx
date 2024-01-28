@@ -9,6 +9,7 @@ import { Task } from '@/context/task-context'
 import { TaskHistory } from './TaskHistory'
 import { useState } from 'react'
 import styled from '@emotion/styled'
+import { CreatedAt } from '@/components/styled/shared'
 
 type Props = {
   task: Task
@@ -102,12 +103,6 @@ const Header = styled('div')({
   display: 'flex',
   columnGap: '0.5rem',
   alignItems: 'center',
-})
-
-const CreatedAt = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  fontSize: '0.75rem',
 })
 
 const Description = styled('p')({

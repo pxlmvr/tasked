@@ -26,4 +26,13 @@ describe('task creation form', () => {
 
     cy.findAllByText(/mandatory field/i).should('have.length', 0)
   })
+
+  it('a created task is added to the task list', () => {
+    cy.findByLabelText('Title').type('My new task')
+    cy.findByLabelText('Description').type('A description')
+
+    cy.get('button#create-task-button').click()
+
+    cy.findByText('My new task').should('not.be.null')
+  })
 })

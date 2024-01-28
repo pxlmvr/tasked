@@ -14,14 +14,14 @@ Prerequisites
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/rechat-coding-challenge.git
+git clone https://github.com/pxlmvr/Tasked.git
 ```
 
 
 2. Navigate to the project directory:
 
 ```bash
-cd rechat-coding-challenge
+cd tasked
 ```
 
 
