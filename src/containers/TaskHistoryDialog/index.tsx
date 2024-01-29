@@ -34,7 +34,7 @@ export const TaskHistoryDialog: React.FC<Props> = ({
       </DialogTitle>
       <Updates>
         {task.history.map((update: TaskHistoryUpdate) => (
-          <TaskUpdate update={update} />
+          <TaskUpdate key={update.createdAt} update={update} />
         ))}
       </Updates>
     </Dialog>

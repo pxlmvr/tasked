@@ -5,8 +5,8 @@ type Padding = 'sm' | 'md' | 'lg'
 
 type Props = {
   children: React.ReactNode
-  className?: string
   padding?: Padding
+  testId?: string
 }
 
 export const CardContainer: React.FC<Props> = ({

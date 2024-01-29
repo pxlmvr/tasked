@@ -29,4 +29,34 @@ describe('<TaskPreview />', () => {
 
     expect(queryByTestId('example-popover')).toBeInTheDocument()
   })
+  it('triggers task history dialog when user clicks on the corresponding button', () => {
+    const { getByText, getByTestId, queryByTestId } = render(
+      <TaskPreview testId="example" task={task} />,
+    )
+
+    fireEvent.click(getByTestId('example-popover-trigger'))
+
+    fireEvent.click(getByText(/task history/i))
+
+    expect(queryByTestId('task-history-dialog')).toBeInTheDocument()
+  })
+  it('triggers delete dialog when user clicks on the corresponding button', () => {
+    const { getByText, getByTestId, queryByTestId } = render(
+      <TaskPreview testId="example" task={task} />,
+    )
+
+    fireEvent.click(getByTestId('example-popover-trigger'))
+
+    fireEvent.click(getByText(/delete task/i))
+
+    expect(queryByTestId('delete-task-modal')).toBeInTheDocument()
+  })
+  it('edit task button redirects to correct edit url', () => {
+    const { getByTestId, queryByRole } = render(
+      <TaskPreview testId="example" task={task} />,
+    )
+
+    fireEvent.click(getByTestId('example-popover-trigger'))
+    expect(queryByRole('link')).toHaveAttribute('href', '/edit?id=123')
+  })
 })
