@@ -7,6 +7,7 @@ import {
   TaskStatus,
 } from '@/context/task-context'
 import { TextInput } from '@/components/formElements/TextInput'
+import { mediaQueries } from '@/utils/mediaQueries'
 import { updateTaskHistory } from '@/utils/updateTaskHistory'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -85,7 +86,8 @@ export const EditTaskForm: React.FC<Props> = ({ task }) => {
           variant="contained"
           onClick={saveChanges}
         >
-          Save changes
+          <ShortCopy>Save</ShortCopy>
+          <LongCopy>Save changes</LongCopy>
         </Button>
         <Button
           href="/"
@@ -112,5 +114,18 @@ const Buttons = styled('div')({
   columnGap: '0.75rem',
   '& > button, & > a': {
     flex: 1,
+  },
+})
+
+const ShortCopy = styled('span')({
+  [mediaQueries.desktop]: {
+    display: 'none',
+  },
+})
+
+const LongCopy = styled('span')({
+  display: 'none',
+  [mediaQueries.desktop]: {
+    display: 'inline',
   },
 })

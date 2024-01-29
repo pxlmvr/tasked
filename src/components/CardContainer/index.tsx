@@ -1,8 +1,7 @@
+import { Device, mediaQueries } from '@/utils/mediaQueries'
 import { Paper } from '@mui/material'
 
 type Padding = 'sm' | 'md' | 'lg'
-
-type Device = 'mobile' | 'desktop'
 
 type Props = {
   children: React.ReactNode
@@ -27,7 +26,7 @@ export const CardContainer: React.FC<Props> = ({
         boxShadow: `0px 8px 48px -12px rgba(16, 24, 40, 0.15)`,
         borderRadius: '1rem',
         overflow: 'hidden',
-        '@media screen and (min-width: 478px)': {
+        [mediaQueries.desktop]: {
           padding: paddingValues[padding].desktop,
         },
       }}
