@@ -8,7 +8,11 @@ export const TaskLog: React.FC = () => {
   const { tasks } = useContext(TaskContext)
 
   return (
-    <Wrapper>
+    <Wrapper
+      role="status"
+      aria-live="polite"
+      aria-relevant="additions removals"
+    >
       <Typography
         component="h2"
         sx={{ fontWeight: 600, marginBottom: '1rem' }}

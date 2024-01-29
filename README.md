@@ -7,7 +7,7 @@ This project is a simple React application that allows users to manage tasks.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 Prerequisites
 
-- Node.js (v14 or later)
+- Node.js (v18 or later)
 - npm package manager
 
 ## Installing
@@ -21,7 +21,7 @@ git clone https://github.com/pxlmvr/Tasked.git
 2. Navigate to the project directory:
 
 ```bash
-cd tasked
+cd Tasked
 ```
 
 

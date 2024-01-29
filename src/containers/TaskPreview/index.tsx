@@ -43,7 +43,7 @@ export const TaskPreview: React.FC<Props> = ({ task, testId }) => {
         </Typography>
         <StatusChip status={task.status} />
         <IconButton
-          aria-describedby={id}
+          aria-label="Open actions menu"
           data-testid={`${testId}-popover-trigger`}
           size="small"
           onClick={handlePopoverClick}

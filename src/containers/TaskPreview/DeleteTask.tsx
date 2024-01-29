@@ -43,13 +43,10 @@ export const DeleteTask: React.FC<Props> = ({ task }) => {
       >
         Delete Task
       </Button>
-      {/* TODO: fix accessibility for this modal*/}
       <Modal
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
         data-testid="delete-task-modal"
         open={open}
-        sx={{ display: 'flex', alignItems: 'center' }}
+        sx={{ display: 'flex', alignItems: 'center', padding: '0 1rem' }}
         onClose={() => setOpen(false)}
       >
         <Paper
@@ -64,6 +61,7 @@ export const DeleteTask: React.FC<Props> = ({ task }) => {
           <Image
             srcSet="/images/trash.png, /images/trash@2x.png 2x"
             src="/images/trash@2x.png"
+            alt=""
           />
           <Typography variant="h5" fontWeight={700}>
             Delete Task?

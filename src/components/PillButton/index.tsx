@@ -1,14 +1,21 @@
 import { Button } from '@mui/material'
 
 type Props = {
+  ariaLabel?: string
   children: React.ReactNode
   id?: string
   onClick: VoidFunction
 }
 
-export const PillButton: React.FC<Props> = ({ children, id, onClick }) => {
+export const PillButton: React.FC<Props> = ({
+  ariaLabel,
+  children,
+  id,
+  onClick,
+}) => {
   return (
     <Button
+      aria-label={ariaLabel}
       color="primary"
       id={id}
       size="large"
