@@ -15,7 +15,7 @@ export const SrOnlyLabel = styled('label')({
 export const FormHeader = styled('div')({
   display: 'flex',
   alignItems: 'center',
-  marginBottom: '1.5rem',
+  marginBottom: '0.5rem',
 })
 
 export const Actions = styled('div')({

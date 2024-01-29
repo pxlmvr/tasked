@@ -32,7 +32,7 @@ export const TextInput: React.FC<Props> = ({
         fullWidth
         helperText={Boolean(error) && 'Mandatory field'}
         id={id}
-        margin="dense"
+        margin="normal"
         multiline={multiline}
         minRows={multiline ? 7 : 1}
         placeholder={label}
