@@ -1,17 +1,17 @@
+import { Button, styled } from '@mui/material'
 import { StatusSelect } from '@/components/formElements/StatusSelect'
-import { TextInput } from '@/components/formElements/TextInput'
 import {
   Task,
   TaskContext,
   TaskContextType,
   TaskStatus,
 } from '@/context/task-context'
-import { Button, styled } from '@mui/material'
-import CheckIcon from '@mui/icons-material/Check'
+import { TextInput } from '@/components/formElements/TextInput'
+import { updateTaskHistory } from '@/utils/updateTaskHistory'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useContext, useState } from 'react'
-import { updateTaskHistory } from '@/utils/updateTaskHistory'
+import CheckIcon from '@mui/icons-material/Check'
 
 type Props = {
   task: Task
@@ -54,18 +54,18 @@ export const EditTaskForm: React.FC<Props> = ({ task }) => {
     <form>
       <TextInput
         error={!taskTitle}
+        label="Title"
         name="title"
         value={taskTitle}
         onChange={e => setTaskTitle(e.target.value)}
-        label="Title"
       />
       <TextInput
         error={!taskDescription}
-        name="description"
+        label="Description"
         multiline
+        name="description"
         value={taskDescription}
         onChange={e => setTaskDescription(e.target.value)}
-        label="Description"
       />
       <StatusSelect
         initialValue={task.status}
@@ -76,6 +76,7 @@ export const EditTaskForm: React.FC<Props> = ({ task }) => {
         <Button
           data-testid="edit-task-confirm"
           size="large"
+          startIcon={<CheckIcon fontSize="small" />}
           sx={theme => ({
             backgroundColor: theme.palette.primary.dark,
             borderRadius: '2rem',
@@ -83,11 +84,11 @@ export const EditTaskForm: React.FC<Props> = ({ task }) => {
           })}
           variant="contained"
           onClick={saveChanges}
-          startIcon={<CheckIcon fontSize="small" />}
         >
           Save changes
         </Button>
         <Button
+          href="/"
           size="large"
           sx={theme => ({
             borderColor: theme.palette.grey[300],
@@ -95,7 +96,6 @@ export const EditTaskForm: React.FC<Props> = ({ task }) => {
             textTransform: 'none',
           })}
           variant="outlined"
-          href="/"
         >
           Cancel
         </Button>

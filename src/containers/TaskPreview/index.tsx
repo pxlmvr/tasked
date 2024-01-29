@@ -1,4 +1,5 @@
 import { CardContainer } from '@/components/CardContainer'
+import { CreatedAt } from '@/components/styled/shared'
 import { DeleteTask } from './DeleteTask'
 import { EditTask } from './EditTask'
 import { format } from 'date-fns'
@@ -8,8 +9,8 @@ import { StatusChip } from '@/components/StatusChip'
 import { Task } from '@/context/task-context'
 import { TaskHistory } from './TaskHistory'
 import { useState } from 'react'
+
 import styled from '@emotion/styled'
-import { CreatedAt } from '@/components/styled/shared'
 
 type Props = {
   task: Task
@@ -43,26 +44,21 @@ export const TaskPreview: React.FC<Props> = ({ task, testId }) => {
         <StatusChip status={task.status} />
         <IconButton
           aria-describedby={id}
+          data-testid={`${testId}-popover-trigger`}
           size="small"
           onClick={handlePopoverClick}
-          data-testid={`${testId}-popover-trigger`}
         >
           <MoreVert />
         </IconButton>
         <Popover
-          data-testid={`${testId}-popover`}
-          id={id}
-          open={open}
           anchorEl={popoverAnchor}
-          onClose={handlePopoverClose}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'right',
           }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
+          data-testid={`${testId}-popover`}
+          id={id}
+          open={open}
           sx={{
             '& .MuiPopover-paper': {
               borderRadius: '1rem',
@@ -71,6 +67,11 @@ export const TaskPreview: React.FC<Props> = ({ task, testId }) => {
               maxWidth: 200,
             },
           }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          onClose={handlePopoverClose}
         >
           <TaskHistory task={task} />
           <EditTask task={task} />

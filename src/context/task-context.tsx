@@ -9,17 +9,17 @@ export type TaskStatus =
   | 'deployed'
 
 export type TaskHistoryUpdate = {
-  targetStatus: TaskStatus
   createdAt: number
+  targetStatus: TaskStatus
 }
 
 export type Task = {
-  id: string
-  title: string
-  description: string
   createdAt: number
-  status: TaskStatus
+  description: string
   history: TaskHistoryUpdate[]
+  id: string
+  status: TaskStatus
+  title: string
 }
 
 export type TaskContextType = {

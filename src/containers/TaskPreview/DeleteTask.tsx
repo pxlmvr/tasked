@@ -1,9 +1,10 @@
+import { Actions } from '@/components/styled/shared'
+import { Modal, Paper, Typography, styled } from '@mui/material'
 import { Task, TaskContext, TaskContextType } from '@/context/task-context'
+
 import Button from '@mui/material/Button'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import React, { useContext, useState } from 'react'
-import { Modal, Paper, Typography, styled } from '@mui/material'
-import { Actions } from '@/components/styled/shared'
 
 type Props = {
   task: Task
@@ -24,6 +25,12 @@ export const DeleteTask: React.FC<Props> = ({ task }) => {
   return (
     <React.Fragment>
       <Button
+        fullWidth
+        startIcon={
+          <DeleteOutlineIcon
+            sx={theme => ({ color: theme.palette.grey[400] })}
+          />
+        }
         sx={theme => ({
           textTransform: 'none',
           fontWeight: 400,
@@ -31,24 +38,19 @@ export const DeleteTask: React.FC<Props> = ({ task }) => {
           padding: '0.5rem 1rem',
           color: theme.palette.error.dark,
         })}
-        fullWidth
         variant="text"
-        startIcon={
-          <DeleteOutlineIcon
-            sx={theme => ({ color: theme.palette.grey[400] })}
-          />
-        }
         onClick={() => setOpen(true)}
       >
         Delete Task
       </Button>
+      {/* TODO: fix accessibility for this modal*/}
       <Modal
-        data-testid="delete-task-modal"
-        open={open}
-        onClose={() => setOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        data-testid="delete-task-modal"
+        open={open}
         sx={{ display: 'flex', alignItems: 'center' }}
+        onClose={() => setOpen(false)}
       >
         <Paper
           sx={{

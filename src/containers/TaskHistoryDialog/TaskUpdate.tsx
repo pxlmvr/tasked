@@ -1,9 +1,9 @@
 import { CreatedAt } from '@/components/styled/shared'
-import { TaskHistoryUpdate } from '@/context/task-context'
-import { Typography, styled } from '@mui/material'
 import { format } from 'date-fns'
 import { Schedule } from '@mui/icons-material'
 import { StatusOption, statusOptions } from '@/utils/statusOptions'
+import { TaskHistoryUpdate } from '@/context/task-context'
+import { Typography, styled } from '@mui/material'
 
 type Props = {
   update: TaskHistoryUpdate

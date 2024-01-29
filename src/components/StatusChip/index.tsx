@@ -1,5 +1,5 @@
-import { TaskStatus } from '@/context/task-context'
 import { Chip } from '@mui/material'
+import { TaskStatus } from '@/context/task-context'
 
 type ChipColors = { background: string; text: string }
 
@@ -28,13 +28,13 @@ export const StatusChip: React.FC<Props> = ({ status }) => {
 
   return (
     <Chip
+      label={label[status]}
       size="small"
       sx={{
         backgroundColor: colors[status].background,
         color: colors[status].text,
         fontWeight: 500,
       }}
-      label={label[status]}
     />
   )
 }

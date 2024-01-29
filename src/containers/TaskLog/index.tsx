@@ -1,8 +1,8 @@
+import { NoTasks } from '@/components/NoTasks'
 import { Task, TaskContext } from '@/context/task-context'
+import { TaskPreview } from '@/containers/TaskPreview'
 import { Typography, styled } from '@mui/material'
 import { useContext } from 'react'
-import { NoTasks } from '@/components/NoTasks'
-import { TaskPreview } from '@/containers/TaskPreview'
 
 export const TaskLog: React.FC = () => {
   const { tasks } = useContext(TaskContext)
@@ -10,9 +10,9 @@ export const TaskLog: React.FC = () => {
   return (
     <Wrapper>
       <Typography
-        variant="h5"
         component="h2"
         sx={{ fontWeight: 600, marginBottom: '1rem' }}
+        variant="h5"
       >
         Tasks
       </Typography>

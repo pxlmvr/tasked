@@ -1,9 +1,9 @@
-import { CardContainer } from '@/components/CardContainer'
-import { PillButton } from '@/components/PillButton'
-import { TextInput } from '@/components/formElements/TextInput'
-import { FormHeader } from '@/components/styled/shared'
-import { Task, TaskContext } from '@/context/task-context'
 import { Add, InsertDriveFileOutlined } from '@mui/icons-material'
+import { CardContainer } from '@/components/CardContainer'
+import { FormHeader } from '@/components/styled/shared'
+import { PillButton } from '@/components/PillButton'
+import { Task, TaskContext } from '@/context/task-context'
+import { TextInput } from '@/components/formElements/TextInput'
 import { Typography, styled } from '@mui/material'
 import { useContext, useState } from 'react'
 
@@ -68,19 +68,19 @@ export const TaskForm: React.FC = () => {
       <form>
         <TextInput
           error={titleTouched && !taskTitle}
+          label="Title"
           name="title"
           value={taskTitle}
           onChange={e => setTaskTitle(e.target.value)}
-          label="Title"
           onBlur={() => setTitleTouched(true)}
         />
         <TextInput
           error={descriptionTouched && !taskDescription}
-          name="description"
+          label="Description"
           multiline
+          name="description"
           value={taskDescription}
           onChange={e => setTaskDescription(e.target.value)}
-          label="Description"
           onBlur={() => setDescriptionTouched(true)}
         />
         <Actions>

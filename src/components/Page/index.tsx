@@ -15,10 +15,10 @@ export const Page: React.FC<Props> = ({ children }) => {
       })}
     >
       <Container
+        maxWidth={false}
         sx={{
           maxWidth: 648,
         }}
-        maxWidth={false}
       >
         {children}
       </Container>

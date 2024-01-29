@@ -3,50 +3,50 @@ import { TextField } from '@mui/material'
 import React from 'react'
 
 type Props = {
+  error?: boolean
   label: string
-  value: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
-  required?: boolean
   multiline?: boolean
   name: string
-  error?: boolean
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  required?: boolean
+  value: string
 }
 
 export const TextInput: React.FC<Props> = ({
+  error = false,
   label,
-  value,
-  onChange,
-  onBlur,
-  required = false,
   multiline = false,
   name,
-  error = false,
+  onBlur,
+  onChange,
+  required = false,
+  value,
 }) => {
   const id: string = `${name}_input`
 
   return (
     <React.Fragment>
       <TextField
-        margin="dense"
-        placeholder={label}
-        size="small"
-        value={value}
-        onChange={onChange}
+        error={Boolean(error)}
         fullWidth
+        helperText={Boolean(error) && 'Mandatory field'}
+        id={id}
+        margin="dense"
+        multiline={multiline}
+        minRows={multiline ? 7 : 1}
+        placeholder={label}
         required={required}
+        size="small"
         sx={{
           '& .MuiInputBase-root': {
             borderRadius: multiline ? '1rem' : '1.75rem',
             boxShadow: '0px 2px 2px 0px rgba(16, 24, 40, 0.05)',
           },
         }}
-        error={Boolean(error)}
-        helperText={Boolean(error) && 'Mandatory field'}
-        multiline={multiline}
-        minRows={multiline ? 7 : 1}
+        value={value}
+        onChange={onChange}
         onBlur={onBlur}
-        id={id}
       />
       <SrOnlyLabel htmlFor={id}>{label}</SrOnlyLabel>
     </React.Fragment>

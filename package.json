@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test:unit": "jest --watch",
     "test:e2e": "cypress open",
-    "test:e2e-headless": "cypress run --headless -b chrome"
+    "test:e2e-headless": "cypress run --headless -b chrome",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

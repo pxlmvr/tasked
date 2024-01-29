@@ -1,16 +1,16 @@
-import { Task, TaskHistoryUpdate } from '@/context/task-context'
 import { Dialog, DialogTitle, styled } from '@mui/material'
+import { Task, TaskHistoryUpdate } from '@/context/task-context'
 import { TaskUpdate } from './TaskUpdate'
 
 type Props = {
-  task: Task
   open: boolean
+  task: Task
   handleClose: () => void
 }
 
 export const TaskHistoryDialog: React.FC<Props> = ({
-  task,
   open,
+  task,
   handleClose,
 }) => {
   return (
@@ -19,13 +19,13 @@ export const TaskHistoryDialog: React.FC<Props> = ({
       fullWidth
       maxWidth="sm"
       open={open}
-      onClose={handleClose}
       PaperProps={{
         sx: {
           borderRadius: '1rem',
           minHeight: 600,
         },
       }}
+      onClose={handleClose}
     >
       <DialogTitle
         sx={{ fontSize: '1.5rem', fontWeight: 600, padding: '2rem' }}

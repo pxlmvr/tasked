@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render } from '@testing-library/react'
-import { TaskPreview } from '.'
 import { Task } from '@/context/task-context'
+import { TaskPreview } from '.'
 
 const task: Task = {
   id: '123',

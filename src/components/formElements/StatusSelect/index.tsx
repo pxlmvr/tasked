@@ -1,21 +1,22 @@
+import { getAllowedTransitions } from '@/utils/statusTransitions'
+import { StatusOption, statusOptions } from '@/utils/statusOptions'
 import { TaskStatus } from '@/context/task-context'
+
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import MenuItem from '@mui/material/MenuItem'
 import React from 'react'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { getAllowedTransitions } from '@/utils/statusTransitions'
-import { StatusOption, statusOptions } from '@/utils/statusOptions'
 
 type Props = {
+  initialValue: TaskStatus
   onChange: (e: SelectChangeEvent) => void
   value: TaskStatus
-  initialValue: TaskStatus
 }
 
 export const StatusSelect: React.FC<Props> = ({
+  initialValue,
   onChange,
   value,
-  initialValue,
 }) => {
   const availableTransitions: TaskStatus[] = getAllowedTransitions(initialValue)
 
@@ -28,21 +29,21 @@ export const StatusSelect: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Select
-        required
+        fullWidth
+        id={id}
         inputProps={{
           'aria-label': 'Task status',
           'data-testid': 'status-select',
         }}
-        id={id}
-        value={value}
-        onChange={onChange}
+        IconComponent={KeyboardArrowDownIcon}
         size="small"
-        fullWidth
         sx={{
           borderRadius: '1.75rem',
           margin: '1rem 0',
         }}
-        IconComponent={KeyboardArrowDownIcon}
+        value={value}
+        required
+        onChange={onChange}
       >
         {availableOptions.map((option: StatusOption) => (
           <MenuItem

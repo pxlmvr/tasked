@@ -32,6 +32,7 @@ export const TaskNotFound: React.FC = () => {
             Looks like this task does not exist...
           </Typography>
           <Button
+            href="/"
             size="large"
             sx={theme => ({
               marginTop: '1rem',
@@ -40,7 +41,6 @@ export const TaskNotFound: React.FC = () => {
               textTransform: 'none',
             })}
             variant="outlined"
-            href="/"
           >
             Back to tasks
           </Button>

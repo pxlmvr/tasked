@@ -9,20 +9,20 @@ type Props = {
 export const EditTask: React.FC<Props> = ({ task }) => {
   return (
     <Button
+      fullWidth
+      href={`/edit?id=${task.id}`}
+      startIcon={
+        <ModeEditOutlineOutlinedIcon
+          sx={theme => ({ color: theme.palette.grey[400] })}
+        />
+      }
       sx={{
         textTransform: 'none',
         fontWeight: 400,
         justifyContent: 'flex-start',
         padding: '0.5rem 1rem',
       }}
-      fullWidth
       variant="text"
-      startIcon={
-        <ModeEditOutlineOutlinedIcon
-          sx={theme => ({ color: theme.palette.grey[400] })}
-        />
-      }
-      href={`/edit?id=${task.id}`}
     >
       Edit Task
     </Button>

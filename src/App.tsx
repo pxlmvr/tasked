@@ -1,10 +1,9 @@
-import { Route, Routes } from 'react-router-dom'
-import { ThemeProvider } from '@mui/material'
-import { theme } from './theme'
-//import { SizedBox } from './components/SizedBox'
-import { Home } from './pages/Home'
 import { Edit } from './pages/Edit'
+import { Home } from './pages/Home'
+import { Route, Routes } from 'react-router-dom'
 import { TaskContextProvider } from './context/task-context'
+import { theme } from './theme'
+import { ThemeProvider } from '@mui/material'
 
 export default function App() {
   return (

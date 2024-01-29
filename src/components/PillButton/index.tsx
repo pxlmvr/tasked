@@ -2,20 +2,20 @@ import { Button } from '@mui/material'
 
 type Props = {
   children: React.ReactNode
-  onClick: VoidFunction
   id?: string
+  onClick: VoidFunction
 }
 
-export const PillButton: React.FC<Props> = ({ children, onClick, id }) => {
+export const PillButton: React.FC<Props> = ({ children, id, onClick }) => {
   return (
     <Button
-      id={id}
-      type="button"
-      sx={{ borderRadius: '2rem', textTransform: 'none' }}
       color="primary"
+      id={id}
+      size="large"
+      sx={{ borderRadius: '2rem', textTransform: 'none' }}
+      type="button"
       variant="contained"
       onClick={onClick}
-      size="large"
     >
       {children}
     </Button>

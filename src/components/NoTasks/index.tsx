@@ -1,5 +1,5 @@
-import { Typography, styled } from '@mui/material'
 import { CardContainer } from '@/components/CardContainer'
+import { Typography, styled } from '@mui/material'
 
 export const NoTasks: React.FC = () => (
   <CardContainer padding="lg">
