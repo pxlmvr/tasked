@@ -14,14 +14,14 @@ Prerequisites
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/pxlmvr/Tasked.git
+git clone https://github.com/pxlmvr/tasked.git
 ```
 
 
 2. Navigate to the project directory:
 
 ```bash
-cd Tasked
+cd tasked
 ```
 
 
